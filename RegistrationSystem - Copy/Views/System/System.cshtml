@@ -1,0 +1,66 @@
+﻿@*@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model RegistrationSystem.Models.System
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "System";
+}
+<!DOCTYPE html>
+<html>
+<head>
+   @*see _Layout for default header*@
+</head>
+<body class="m-1 p-1">
+
+    <div class="form-group">
+        <div class="bg-primary p-2 text-light mb-3">
+            <h4>System Registration</h4>
+        </div>
+
+        <div class="text-right">
+            <form asp-action="Index" asp-controller="Home" method="get">
+                <button type="submit" class="btn btn-secondary text-right">Home</button>
+            </form>
+        </div>
+    </div>
+
+    <form asp-action="SystemForm" method="post">
+
+        <div class="form-group">
+            <div><span asp-validation-for="Sys_Code" class="text-danger"></span></div>
+            <label asp-for="Sys_Code">System code:</label>
+            <div class="btn-group btn-group-sm">
+                <input asp-for="Sys_Code" class="form-control-sm col-sm-5" />
+                <button type="submit" asp-controller="SystemListing" asp-action="Search" class="btn btn-primary">Search</button>
+
+                <button type="submit" asp-action="GetFirst" formmethod="get" class="btn btn-outline-primary"><<</button>
+                <button type="submit" asp-action="GetPrev" formmethod="get" class="btn btn-outline-primary"><</button>
+
+                <button type="submit" asp-action="GetNext" formmethod="get" class="btn btn-outline-primary">></button>
+                <button type="submit" asp-action="GetLast" formmethod="get" class="btn btn-outline-primary">>></button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Sys_Name">System name:</label>
+            <div><span asp-validation-for="Sys_Name" class="text-danger"></span></div>
+            <input asp-for="Sys_Name" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Sys_Description">System description:</label>
+            <div><span asp-validation-for="Sys_Description" class="text-danger"></span></div>
+            <input asp-for="Sys_Description" class="form-control" />
+        </div>
+
+        <div class="text-right">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" asp-action="Index" class="btn btn-primary">Cancel</button>
+            <button type="submit" asp-action="Delete" class="btn btn-primary">Delete</button>
+            <button type="submit" asp-controller="SystemListing" asp-action="Listing" class="btn btn-primary">Listing</button>
+        </div>
+
+    </form>
+</body>
+</html>
