@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Enhancement>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+    ViewBag.Title = "Enhancement";
+    ViewBag.HeaderTitle = "Enhancement Entry Setup";
+}
+
+<!DOCTYPE html>
+<body class="m-1 p-1">
+
+    <div class="text-right">
+        <a asp-action="Index" asp-controller="Home" class="btn btn-secondary btn-sm">Home</a>
+    </div>
+
+    <form asp-action="SearchSystem" method="post">
+        <div class="form-group">
+
+            <label for="Enh_Sys_Code" class="col-form-label col-sm-auto">System code:</label>
+            <div class="btn-group btn-group-sm">
+
+                <input class="form-control-sm col-sm-5" name="Enh_Sys_Code" value="@ViewBag.Sys_Code" />
+                <button type="submit" class="btn btn-primary btn-sm col-sm-3">Search</button>
+
+                <button type="submit" asp-action="GetFirst" formmethod="get" class="btn btn-outline-primary"><<</button>
+                <button type="submit" asp-action="GetPrev" formmethod="get" class="btn btn-outline-primary"><</button>
+
+                <button type="submit" asp-action="GetNext" formmethod="get" class="btn btn-outline-primary">></button>
+                <button type="submit" asp-action="GetLast" formmethod="get" class="btn btn-outline-primary">>></button>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Enh_Mode_Code" class="col-form-label col-sm-auto">Module code:</label>
+            <div class="btn-group btn-group-sm">
+                <input class="form-control-sm col-sm-5" name="Enh_Mod_Code" value="@ViewBag.Mod_Code" />
+                <button type="submit" asp-action="SearchModule" class="btn btn-primary btn-sm col-sm-3">Search</button>
+            </div>
+        </div>
+
+        <div class="form-group text-right">
+            <button type="submit" asp-action="Enhancement" class="btn btn-primary btn-sm">Create</button>
+        </div>
+
+    </form>
+
+    <form asp-action="Create" method="post">
+        <table class="table table-striped table-bordered-sm">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Version</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var r in Model)
+                {
+                    <tr>
+                        <td>@r.Enh_Name</td>
+                        <td>@r.Enh_Description</td>
+                        <td>@r.Enh_Version</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", r,
+                                             new { @class = "text-right btn btn-primary btn-sm" })
+                            @Html.ActionLink("Delete", "Delete", r,
+                                             new { @class = "text-right btn btn-primary btn-sm" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+
+</body>

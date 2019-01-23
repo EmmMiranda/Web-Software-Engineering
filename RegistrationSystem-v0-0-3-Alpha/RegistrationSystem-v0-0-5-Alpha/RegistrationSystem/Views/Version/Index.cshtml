@@ -1,0 +1,64 @@
+﻿@model RegistrationSystem.Models.Version
+@{ 
+    Layout = "_Layout";
+    ViewBag.Title = "Index";
+    ViewBag.HeaderTitle = "Version Entry Setup";
+}
+<!DOCTYPE html>
+<html>
+<body class="m-1 p-1">
+
+    <div class="text-right">
+        <form asp-action="Index" asp-controller="Home" method="get">
+            <button type="submit" class="btn btn-secondary btn-sm text-right">Home</button>
+           @* <button type="submit" asp-action="Updates" class="btn btn-secondary btn-sm text-right">Updates</button> *@
+            @Html.ActionLink("Updates", "Updates", @Model, new { @class = "btn btn-secondary btn-sm text-right" })
+        </form>
+     
+    </div>
+
+    <form asp-action="VersionForm" method="post">
+        <div class="form-group">
+            <div class="form-group">
+                <div><span asp-validation-for="Ver_Sys_Code" class="text-danger"></span></div>
+                <label asp-for="Ver_Sys_Code" class="mr-1">System code:</label>
+                <div class="btn-group btn-group-sm">
+                    
+                    <input asp-for="Ver_Sys_Code" class="form-control-sm col-sm-5" />
+                    <button type="submit" asp-controller="Version" asp-action="SystemSearch" class="btn btn-primary">Search</button>
+
+                    <button type="submit" asp-action="GetFirst" formmethod="get" class="btn btn-outline-primary"><<</button>
+                    <button type="submit" asp-action="GetPrev" formmethod="get" class="btn btn-outline-primary"><</button>
+
+                    <button type="submit" asp-action="GetNext" formmethod="get" class="btn btn-outline-primary">></button>
+                    <button type="submit" asp-action="GetLast" formmethod="get" class="btn btn-outline-primary">>></button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Ver_Code" class="mr-1">Version code:</label>
+                <div class="btn-group btn-group-sm">
+
+                    <input asp-for="Ver_Code" class="form-control-sm col-sm-5" />
+                    <button type="submit" asp-action="SearchVersion" class="btn btn-primary col-sm-3">Search</button>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Ver_Description">Version description:</label>
+            <div><span asp-validation-for="Ver_Description" class="text-danger"></span></div>
+            <input asp-for="Ver_Description" class="form-control" />
+        </div>
+
+        <div class="form-group text-right">
+            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+            <button type="submit" class="btn btn-primary btn-sm" formmethod="get">Cancel</button>
+            <button type="submit" asp-action="Delete" class="btn btn-primary btn-sm">Delete</button>
+            <button type="submit" asp-controller="VersionListing" asp-action="Listing" class="btn btn-primary btn-sm">Listing</button>
+        </div>
+
+    </form>
+</body>
+</html>
