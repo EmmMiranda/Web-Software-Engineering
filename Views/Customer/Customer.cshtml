@@ -1,0 +1,109 @@
+﻿@*@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model RegistrationSystem.Models.Customer
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Customer";
+    ViewBag.HeaderTitle = "Customer Setup";
+}
+<!DOCTYPE html>
+<html>
+<head>
+   @*see _Layout for default header*@
+</head>
+<body class="m-1 p-1">
+
+    <div class="text-right">
+        <form asp-action="Index" asp-controller="Home" method="get">
+            <button type="submit" class="btn btn-secondary btn-sm text-right">Home</button>
+        </form>
+    </div>
+
+    <form asp-action="CustomerForm" method="post">
+        <div class="form-group">
+            <div class="form-group">
+                <div><span asp-validation-for="Cst_Code" class="text-danger"></span></div>
+                <label asp-for="Cst_Code" class="mr-1">Customer code:</label>
+                <div class="btn-group btn-group-sm">
+
+                    <input asp-for="Cst_Code" class="form-control-sm col-sm-5" />
+                    <button type="submit" asp-controller="Customer" asp-action="SearchCustomer" class="btn btn-primary">Search</button>
+
+                    <button type="submit" asp-action="GetFirst" formmethod="get" class="btn btn-outline-primary"><<</button>
+                    <button type="submit" asp-action="GetPrev" formmethod="get" class="btn btn-outline-primary"><</button>
+
+                    <button type="submit" asp-action="GetNext" formmethod="get" class="btn btn-outline-primary">></button>
+                    <button type="submit" asp-action="GetLast" formmethod="get" class="btn btn-outline-primary">>></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Cst_Name">Customer name:</label>
+            <div><span asp-validation-for="Cst_Name" class="text-danger"></span></div>
+            <input asp-for="Cst_Name" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Cst_Description">Customer description:</label>
+            <div><span asp-validation-for="Cst_Description" class="text-danger"></span></div>
+            <input asp-for="Cst_Description" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Cst_AdressLine1">Address Line 1:</label>
+            <div><span asp-validation-for="Cst_AdressLine1" class="text-danger"></span></div>
+            <input asp-for="Cst_AdressLine1" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Cst_AdressLine2">Address Line 2:</label>
+            <input asp-for="Cst_AdressLine2" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Cst_AdressLine3">Address Line 3:</label>
+            <input asp-for="Cst_AdressLine3" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Cst_City">City:</label>
+            <div><span asp-validation-for="Cst_City" class="text-danger"></span></div>
+            <input asp-for="Cst_City" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Cst_State">State:</label>
+            <div><span asp-validation-for="Cst_State" class="text-danger"></span></div>
+            <input asp-for="Cst_State" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Cst_ZipCode">Zip Code:</label>
+            <div><span asp-validation-for="Cst_ZipCode" class="text-danger"></span></div>
+            <input asp-for="Cst_ZipCode" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Cst_TelephoneNo">Telephone No:</label>
+            <div><span asp-validation-for="Cst_TelephoneNo" class="text-danger"></span></div>
+            <input asp-for="Cst_TelephoneNo" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Cst_EmailAddress">Email Address:</label>
+            <div><span asp-validation-for="Cst_EmailAddress" class="text-danger"></span></div>
+            <input asp-for="Cst_EmailAddress" class="form-control" />
+        </div>
+
+        <div class="text-right">
+            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+            <button type="submit" class="btn btn-primary btn-sm" formmethod="get">Cancel</button>
+            <button type="submit" asp-action="Delete" class="btn btn-primary btn-sm">Delete</button>
+            <button type="submit" asp-controller="CustomerListing" asp-action="Listing" class="btn btn-primary btn-sm">Listing</button>
+        </div>
+
+    </form>
+</body>
+</html>

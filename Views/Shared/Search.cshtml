@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<System>
+
+@{ 
+    Layout = null;
+    ViewData["Cst_Code"] = ViewBag.Cst_Code;
+
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <title>Search</title>
+</head>
+
+<body class="m-1 p-1">
+    <div class="bg-primary p-2 text-light"><h4>Search Results</h4></div>
+
+    <table class="table table-striped table-bordered-sm">
+        <thead>
+            <tr>
+                <th>System Code</th>
+                <th>System Name</th>
+                <th>System Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (System s in Model)
+            {
+               string ControllerName = ViewBag.ControllerName;
+                <tr>
+                    <td>@Html.ActionLink(@s.Sys_Code, "Select", ControllerName, s)</td> @* new { @ViewBag.ControllerName }, s)</td> *@
+                    <td>@s.Sys_Name</td>
+                    <td>@s.Sys_Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>

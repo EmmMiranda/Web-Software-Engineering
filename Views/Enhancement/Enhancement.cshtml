@@ -1,0 +1,59 @@
+﻿@model Enhancement
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Enhancement";
+    ViewBag.HeaderTitle = "Enhancement";
+}
+
+<!DOCTYPE html>
+<html>
+    <body class="m-1 p-1">
+
+        <div class="text-right">
+            <form asp-action="Index" asp-controller="Enhancement" method="get">
+                <button type="submit" class="btn btn-secondary btn-sm text-right">Home</button>
+            </form>
+        </div>
+
+        <form asp-action="EnhancementForm" method="post">
+
+            <div class="form-group">
+        
+                <input type="hidden" asp-for="Enh_Sys_Code" value="@ViewBag.Sys_Code" />
+                <input type="hidden" asp-for="Enh_Mod_Code" value="@ViewBag.Mod_Code" />
+                    
+                <div class="form-group">
+                    <label asp-for="Enh_Code">Enhancement code:</label>
+                    <div><span asp-validation-for="Enh_Code" class="text-danger"></span></div>
+                    <input asp-for="Enh_Code" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Enh_Name">Enhancement name:</label>
+                    <div><span asp-validation-for="Enh_Name" class="text-danger"></span></div>
+                    <input asp-for="Enh_Name" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Enh_Description">Enhancement description:</label>
+                    <div><span asp-validation-for="Enh_Description" class="text-danger"></span></div>
+                    <input asp-for="Enh_Description" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Enh_Version">Enhancement version:</label>
+                    <div><span asp-validation-for="Enh_Version" class="text-danger"></span></div>
+                    <input asp-for="Enh_Version" class="form-control" />
+                </div>
+
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                    <button type="submit" asp-action="Index" class="btn btn-primary btn-sm">Cancel</button>
+                </div>
+
+            </div>
+
+        </form>
+
+    </body>
+</html>
