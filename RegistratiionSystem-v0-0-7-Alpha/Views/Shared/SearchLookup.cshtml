@@ -1,0 +1,56 @@
+﻿@model IEnumerable<IEnumerable<string>>
+@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <title>Lookup</title>
+    </head>
+
+    <body class="m-1 p-1">
+        <div class="bg-primary p-2 text-light"><h4>Lookup Results</h4></div>
+
+        <table class="table table-striped table-bordered-sm">
+            <thead>
+                <tr>
+                    @foreach (var field_names in ViewBag.FieldNames)
+                    {
+                        <td>@field_names</td>
+                    }
+                </tr>
+            </thead>
+            @foreach (var field_values in @Model)
+            {
+            <tr>
+                @{
+                    bool first_field = true;
+                    @foreach (var v in field_values)
+                    {
+                        
+                        if (first_field)
+                        {
+                            string ControllerName = ViewBag.ControllerName;
+                            
+                            <td>@Html.ActionLink(@v, "SelectLookupOption", ControllerName, 
+                                                 new { field_values = field_values.ToList()})</td>
+                            first_field = false;
+                        }
+                        else
+                        {
+                            <td>@v</td>
+                        }
+                    }
+                }
+            </tr>
+
+            }
+        </table>
+    </body>
+
+</html>

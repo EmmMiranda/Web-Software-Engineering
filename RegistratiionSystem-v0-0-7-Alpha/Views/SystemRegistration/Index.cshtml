@@ -1,0 +1,267 @@
+﻿@model SystemRegistration
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Index";
+    ViewBag.TxtAlign = "text-left";
+    ViewBag.HeaderTitle = "System Registration";
+}
+
+<head>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        /* Style the tab */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+            /* Style the buttons inside the tab */
+            .tab button {
+                background-color: inherit;
+                float: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 14px 16px;
+                transition: 0.3s;
+                font-size: 17px;
+            }
+
+                /* Change background color of buttons on hover */
+                .tab button:hover {
+                    background-color: #ddd;
+                }
+
+                /* Create an active/current tablink class */
+                .tab button.active {
+                    background-color: #ccc;
+                }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+    </style>
+</head>
+
+<div class="text-right">
+    <form asp-action="Index" asp-controller="Home" method="get">
+        <button type="submit" class="btn btn-secondary btn-sm text-right">Home</button>
+    </form>
+</div>
+
+<form id="SystemForm" asp-action="SearchCustomer" method="post">
+
+    <input type="hidden" name="cur_tab" id="cur_tab" value="@ViewBag.CurrentTab"/>
+
+    <div class="form-group">
+
+        <div class="form-group">
+            <div><span asp-validation-for="Syr_Cst_Code" class="text-danger"></span></div>
+            <label asp-for="Syr_Cst_Code">Customer Code</label>
+            <div class="btn-group btn-group-sm">
+                <input asp-for="Syr_Cst_Code" class="form-control-sm col-sm-5" />
+                <button type="submit" class="btn btn-primary btn-sm col-sm-3">Search</button>
+
+                <button type="submit" asp-action="GetFirst" formmethod="get" class="btn btn-outline-primary"><<</button>
+                <button type="submit" asp-action="GetPrev" formmethod="get" class="btn btn-outline-primary"><</button>
+                <button type="submit" asp-action="GetNext" formmethod="get" class="btn btn-outline-primary">></button>
+                <button type="submit" asp-action="GetLast" formmethod="get" class="btn btn-outline-primary">>></button>
+                <button type="submit" asp-action="SearchLookup" formmethod="get" class="btn btn-primary btn-sm">
+                    <i class="fa fa-search"></i>
+                </button>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Customer Name</label>
+            <input class="form-control-sm" size="30" value="@ViewBag.CstName" disabled/>
+        </div>
+
+        <div class="form-group">
+            <div><span asp-validation-for="Syr_Sys_Code" class="text-danger"></span></div>
+            <label asp-for="Syr_Sys_Code">System Code</label>
+            <div class="btn-group btn-group-sm">
+                <input asp-for="Syr_Sys_Code" class="form-control-sm col-sm-5" />
+                <button type="submit" asp-action="SearchSystem" class="btn btn-primary btn-sm col-sm-3">Search</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div><span asp-validation-for="Syr_Ver_Code" class="text-danger"></span></div>
+            <label asp-for="Syr_Ver_Code">Version Code</label>
+            <div class="btn-group btn-group-sm">
+                <input asp-for="Syr_Ver_Code" class="form-control-sm col-sm-5" />
+                <button type="submit" asp-action="SearchVersion" class="btn btn-primary btn-sm col-sm-3">Search</button>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'System')" id="SystemTab">System</button>
+    <button class="tablinks" onclick="openTab(event, 'Modules')" id="ModuleTab">Modules</button>
+    <button class="tablinks" onclick="openTab(event, 'Enhancements')" id="EnhancementTab">Enhancements</button>
+</div>
+
+<form asp-action="SystemRegistrationForm" method="post">
+
+    <input type="hidden" asp-for="Syr_Cst_Code" />
+    <input type="hidden" asp-for="Syr_Sys_Code" />
+    <input type="hidden" asp-for="Syr_Ver_Code" />
+
+    <div class="form-group">
+
+        <div id="System" class="tabcontent">
+
+            <div class="form-group">
+                <label asp-for="Syr_SerialNum">Serial Number:</label>
+                <input asp-for="Syr_SerialNum" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Syr_CustomerKey">Customer Key:</label>
+                <input asp-for="Syr_CustomerKey" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Syr_UnlockKey">Unlock Key:</label>
+                <input asp-for="Syr_UnlockKey" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Syr_ProdKey">Product Key:</label>
+                <input asp-for="Syr_ProdKey" class="form-control" />
+            </div>
+
+        </div>
+
+        <div id="Modules" class="tabcontent">
+
+            <div class="form-group text-right">
+                <button type="submit" asp-action="SelectModules" class="btn btn-primary btn-sm text-center">Select</button>
+            </div>
+            
+            <div class="form-group">
+            @await Component.InvokeAsync(nameof(SelectedModules),
+                               new
+                               SystemRegistration{
+                                   Syr_Cst_Code = Model?.Syr_Cst_Code,
+                                   Syr_Sys_Code = Model?.Syr_Sys_Code,
+                                   Syr_Ver_Code = Model?.Syr_Ver_Code
+                               })
+            </div>
+
+        </div>
+
+        <div id="Enhancements" class="tabcontent">
+
+            <div class="form-group">
+                <div class="form-group text-right">
+                    <button type="submit" asp-action="SelectEnhancements" class="btn btn-primary btn-sm text-center">Select</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="mr-1" for="Module_Code">Module code</label>
+                <div class="btn-group btn-group-sm">
+                    <input class="form-control-sm col-sm-5" type="text" id="Mod_Code" name="Mod_Code" value=@ViewBag.Mod_Code />
+                    <button type="submit" asp-action="SearchModule" class="btn btn-primary col-sm-3">Search</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @await Component.InvokeAsync(nameof(SelectedEnhancements),
+                        new
+                        EnhancementSelectionList
+                        {
+                            srk = new SystemRegistration { Syr_Cst_Code = Model?.Syr_Cst_Code,
+                                                           Syr_Sys_Code = Model?.Syr_Sys_Code,
+                                                           Syr_Ver_Code = Model?.Syr_Ver_Code },
+                            Mod_Code = ViewBag.Mod_Code
+                        })
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <div class="text-right">
+            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+            <button type="submit" asp-action="Index" class="btn btn-primary btn-sm" formmethod="get">Cancel</button>
+            <button type="submit" asp-action="Delete" class="btn btn-primary btn-sm">Delete</button>
+        </div>
+    </div>
+</form>
+
+<script>
+
+    function openTab(event, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+
+        }
+        document.getElementById(tabName).style.display = "block";
+        event.currentTarget.className += " active";
+
+        if (tabName == "Modules") {
+            var model = {
+                Syr_Cst_Code: getCustomerCode(),
+                Syr_Sys_Code: getSystemCode(),
+                Syr_Ver_Code: getVersionCode()
+                };
+            $.ajax({
+                url: '@Url.Action("SystemRegForm", "SystemRegistration")',
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(model),
+                success: function (data) {
+                    console.log("SystemRegForm action method," +
+                                " with form complex object was called");
+                }
+            });
+        }
+    }
+
+    switch (document.getElementById("SystemForm").elements["cur_tab"].value) {
+        case "Module":
+            document.getElementById("ModuleTab").click();
+            break;
+        case "Enhancement":
+            document.getElementById("EnhancementTab").click();
+            break;
+        default:
+            document.getElementById("SystemTab").click();
+    }
+
+    function getCustomerCode() {
+        return document.getElementById("SystemForm").elements["Syr_Cst_Code"].value;
+    }
+
+    function getSystemCode() {
+        return document.getElementById("SystemForm").elements["Syr_Sys_Code"].value;
+    }
+
+    function getVersionCode() {
+        return document.getElementById("SystemForm").elements["Syr_Ver_Code"].value;
+    }
+
+</script>

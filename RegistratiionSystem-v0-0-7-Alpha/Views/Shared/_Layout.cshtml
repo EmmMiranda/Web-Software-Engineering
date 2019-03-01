@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+    @*
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    *@
+
+    <link rel="stylesheet" href="~/lib/jquery/core.js" />
+    <title>@ViewBag.Title</title>
+    <style>
+        .input-validation-error {
+            border-color: red;
+            background-color: #fee;
+        }
+    </style>
+</head>
+<body class="m-1 p-1">
+    <div class="@ViewBag.TxtAlign bg-primary p-2 text-light mb-3">
+
+        @if (User?.Identity?.IsAuthenticated ?? false)
+        { 
+            <div class="text-right">
+                <a style="font-size:x-small;"
+                   asp-controller="Account" asp-action="Logout" class="btn btn-danger btn-sm ml-1">Logout</a>
+            </div>
+        }
+        <h3>@ViewBag.HeaderTitle</h3>
+
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

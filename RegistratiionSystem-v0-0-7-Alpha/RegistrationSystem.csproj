@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <PackageReleaseNotes>1. Create empty MVC project.
+   1.1 Create folder structure
+2. Connect Database
+3. Create  Model
+4. Create Controller
+5. Create View
+6. Display Data Listing
+7. Create input form.</PackageReleaseNotes>
+    <UserSecretsId>fc1e49a3-75e4-42e3-8827-aa1c929801ce</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <Folder Include="wwwroot\lib\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\SystemRegistration\Index.cshtml" />
+    <None Include="Views\SystemRegistration\SelectModules.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+  </ItemGroup>
+
+</Project>
