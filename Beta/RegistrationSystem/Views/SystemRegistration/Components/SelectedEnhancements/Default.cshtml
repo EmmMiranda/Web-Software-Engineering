@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Enhancement>
+@if (Model != null)
+{
+    <table class="table table-striped table-bordered-sm">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Version</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in Model)
+            {
+                <tr>
+                    <td>@r.Enh_Code</td>
+                    <td>@r.Enh_Name</td>
+                    <td>@r.Enh_Description</td>
+                    <td>@r.Enh_Version</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
