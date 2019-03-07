@@ -1,0 +1,16 @@
+C:\Users\emiranda\Documents\software_engineering\programming\cs\asp\RegistrationSystem\RegistrationSystemClient\bin\Release\netcoreapp2.2\RegistrationSystem.Views.dll
+C:\Users\emiranda\Documents\software_engineering\programming\cs\asp\RegistrationSystem\RegistrationSystemClient\bin\Release\netcoreapp2.2\RegistrationSystem.Views.pdb
+C:\Users\emiranda\Documents\software_engineering\programming\cs\asp\RegistrationSystem\RegistrationSystemClient\bin\Release\netcoreapp2.2\RegistrationSystemClient.deps.json
+C:\Users\emiranda\Documents\software_engineering\programming\cs\asp\RegistrationSystem\RegistrationSystemClient\bin\Release\netcoreapp2.2\RegistrationSystemClient.runtimeconfig.json
+C:\Users\emiranda\Documents\software_engineering\programming\cs\asp\RegistrationSystem\RegistrationSystemClient\bin\Release\netcoreapp2.2\RegistrationSystemClient.runtimeconfig.dev.json
+C:\Users\emiranda\Documents\software_engineering\programming\cs\asp\RegistrationSystem\RegistrationSystemClient\bin\Release\netcoreapp2.2\RegistrationSystemClient.dll
+C:\Users\emiranda\Documents\software_engineering\programming\cs\asp\RegistrationSystem\RegistrationSystemClient\bin\Release\netcoreapp2.2\RegistrationSystemClient.pdb
+C:\Users\emiranda\Documents\software_engineering\programming\cs\asp\RegistrationSystem\RegistrationSystemClient\bin\Release\netcoreapp2.2\RegistrationSystem.dll
+C:\Users\emiranda\Documents\software_engineering\programming\cs\asp\RegistrationSystem\RegistrationSystemClient\bin\Release\netcoreapp2.2\RegistrationSystem.pdb
+C:\Users\emiranda\Documents\software_engineering\programming\cs\asp\RegistrationSystem\RegistrationSystemClient\obj\Release\netcoreapp2.2\RegistrationSystemClient.csprojAssemblyReference.cache
+C:\Users\emiranda\Documents\software_engineering\programming\cs\asp\RegistrationSystem\RegistrationSystemClient\obj\Release\netcoreapp2.2\RegistrationSystemClient.csproj.CoreCompileInputs.cache
+C:\Users\emiranda\Documents\software_engineering\programming\cs\asp\RegistrationSystem\RegistrationSystemClient\obj\Release\netcoreapp2.2\RegistrationSystemClient.AssemblyInfoInputs.cache
+C:\Users\emiranda\Documents\software_engineering\programming\cs\asp\RegistrationSystem\RegistrationSystemClient\obj\Release\netcoreapp2.2\RegistrationSystemClient.AssemblyInfo.cs
+C:\Users\emiranda\Documents\software_engineering\programming\cs\asp\RegistrationSystem\RegistrationSystemClient\obj\Release\netcoreapp2.2\RegistrationSystemClient.csproj.CopyComplete
+C:\Users\emiranda\Documents\software_engineering\programming\cs\asp\RegistrationSystem\RegistrationSystemClient\obj\Release\netcoreapp2.2\RegistrationSystemClient.dll
+C:\Users\emiranda\Documents\software_engineering\programming\cs\asp\RegistrationSystem\RegistrationSystemClient\obj\Release\netcoreapp2.2\RegistrationSystemClient.pdb

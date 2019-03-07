@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "RegistrationSystemClient": {
+      "commandName": "Project",
+      "commandLineArgs": "ACHC S100 430"
+    }
+  }
+}
