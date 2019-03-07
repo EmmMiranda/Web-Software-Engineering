@@ -1,0 +1,54 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Index";
+    ViewBag.TxtAlign = "text-center";
+    ViewBag.HeaderTitle = "Registration System";
+}
+
+<!DOCTYPE html>
+<html>
+<body class="p-1">
+
+    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+    {
+        <div class="text-right mb-3">
+            <a asp-controller="Admin" asp-action="Index" class="btn btn-secondary btn-sm">
+                <i class="fa fa-users"></i>
+            </a>
+            <a asp-controller="RoleAdmin" asp-action="Index" class="btn btn-secondary btn-sm">
+                <i class="fa fa-cog fa-spin"></i>
+            </a>
+        </div>
+    }
+
+        <div class="container">
+
+            <form method="get" class="text-center">
+
+                <div class="btn-group-vertical">
+                    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                    {
+
+                        <button type="submit" asp-action="SystemRegistration" class="btn btn-primary mb-1">System Setup</button>
+                        <button type="submit" asp-action="ModuleSetup" class="btn btn-secondary mb-1">Module Setup</button>
+                        <button type="submit" asp-action="VersionSetup" class="btn btn-primary mb-1">Version Setup</button>
+                        <button type="submit" asp-action="EnhancementSetup" class="btn btn-secondary mb-1">Enhancement Setup</button>
+                        <button type="submit" asp-action="CustomerSetup" class="btn btn-primary mb-1">Customer Setup</button>
+                    }
+                    @if (ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("User") ||
+                         ViewContext.HttpContext.User.IsInRole("Viewer"))
+                    {
+                    <button type="submit" asp-action="SysRegistration" class="btn btn-secondary mb-1">System Registration Entry</button>
+                    }
+
+                </div>
+
+            </form>
+        </div>
+
+    </body>
+</html>
+

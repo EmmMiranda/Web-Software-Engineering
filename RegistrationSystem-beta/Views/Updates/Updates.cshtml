@@ -1,0 +1,85 @@
+﻿@model IEnumerable<RegistrationSystem.Models.Updates>
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Updates";
+    ViewBag.HeaderTitle = "Update Entry Setup";
+}
+<!DOCTYPE html>
+<html>
+<body class="m-1 p-1">
+
+    <br />
+
+    <form asp-action="UpdatesForm" method="post">
+        <div class="form-group">
+            <div class="form-group">
+
+                <input type="hidden" name="Upd_Sys_Code" value=@ViewBag.Sys_Code />
+                <input type="hidden" name="Upd_Ver_Code" value=@ViewBag.Ver_Code />
+
+                <div class="form-group row">
+                    @*<div><span asp-validation-for="Upd_Sys_Code" class="text-danger"></span></div>*@
+                    <label for="Upd_Sys_Code" class="col-form-label col-sm-auto">System code:</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" name="Upd_Sys_Code" value=@ViewBag.Sys_Code disabled />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @*<div><span asp-validation-for="Upd_Ver_Code" class="text-danger"></span></div>*@
+                    <label for="Upd_Ver_Code" class="col-form-label col-sm-auto">Version code:</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" name="Upd_Ver_Code" value=@ViewBag.Ver_Code disabled />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @*@<div><span asp-validation-for="Upd_Code" class="text-danger"></span></div>*@
+                    <label for="Upd_Code" class="col-form-label col-sm-auto">Update code:</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" name="Upd_Code" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Upd_Description" class="col-form-label">Update description:</label>
+                @*<div><span asp-validation-for="Upd_Description" class="text-danger"></span></div>*@
+                <input class="form-control" name="Upd_Description" />
+            </div>
+
+            <div class="form-group text-right">
+                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                @Html.ActionLink("Cancel", "Updates", new { Ver_Sys_Code = @ViewBag.Sys_Code, Ver_Code = @ViewBag.Ver_Code },
+                                 new { @class = "btn btn-primary btn-sm text-right" })
+            </div>
+        </div>
+    </form>
+
+    
+    <table class="table table-striped table-bordered-sm">
+        <thead>
+            <tr>
+                <th>Update Code</th>
+                <th>Update Description</th>
+                <th>Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in Model)
+             {
+                <tr>
+                    <td>@r.Upd_Code</td>
+                    <td>@r.Upd_Description</td>
+                    
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", r,
+                                         new { @class = "btn btn-primary btn-sm text-right" })
+                    </td>
+                 </tr>
+             }
+        </tbody>
+    </table>
+
+</body>
+</html>
